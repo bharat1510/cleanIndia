@@ -1,7 +1,7 @@
 # CleanIndia
 Recently, as we know that the garbage are overflow from the dustbin and make the nearby place dirty. The CleanIndia my project doing such great job for this problem.  A person only take a photo and just upload via our website. There is no need to enter his/her location. My project take automatically his/her latitude and longitude and give the graphical represent to the authority (Municipal Corporation) to get this garbage asap.
 
-#Project Details - 
+# Project Details - 
 Project Title: Clean India <br />
 Project Front-End Langauges: HTML5, CSS3, JS, JQUERY <br />
 Project Back-End Languages: PHP, Javascript, MYSQL <br />
@@ -17,7 +17,7 @@ Run Project on your machine -
    localhost:80/
    
    
-#Project Outputs -
+# Project Outputs -
 
 1. HOME PAGE 
 
