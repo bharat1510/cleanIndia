@@ -1,26 +1,7 @@
- <!-- Must have to login first code -->
-<?php  /*
-	session_start(); 
-
-	if (!isset($_SESSION['username'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: login/index.php');
-	}
-
-	if (isset($_GET['logout'])) {
-		session_destroy();
-		unset($_SESSION['username']);
-		header("location: login/index.php");
-	} */
-		$lat = $_GET["lat"];
-		$lon = $_GET["lon"];
-		include_once('mysqlconnect.php');
-		
-		$query = "INSERT INTO location (letitude,longitude) VALUES('$lat', '$lon')";
-			mysqli_query($conn, $query);
-
-?>
-
+<?php 
+	$usr = $_GET['usr'];
+	$lat = $_GET['lat'];
+	$long = $_GET['lon']; ?>
 <html>
 <head><title>Clean India</title>
 
@@ -34,9 +15,9 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	
-	<link rel="stylesheet" href="main.css" type="text/css">
+	<link rel="stylesheet" href="css/main.css" type="text/css">
 	
-	<link rel="stylesheet" href="header.css" type="text/css">
+	<link rel="stylesheet" href="css/header.css" type="text/css">
 		
 	<!-- Special Font & Symbol -->	
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -57,11 +38,18 @@
 
                 <div class="menu">
 				<ul>
-					<li><a href="index.php">Home</a></li>
-					<li><a href="main.php">Add Photo/Video</a></li>
+					<li><a href="#">Home</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">Contact</a></li>
-					<li><a href="login/index.php"><button class="btn btn-success btn-md">Login</button></a></li>
+					<?php 
+					if(isset($_GET['usr'])) {
+						echo '<li><a href="login/logout.php"><button class="btn btn-warning btn-md">Logout</button></a></li>';
+						echo '<li><p>Welcome, '.$_GET['usr'].'</p></li>';
+					} 
+					else {
+						echo '<li><a href="login/login.php"><button class="btn btn-warning btn-md">Login</button></a></li>';
+					}
+					?>
 				</ul>
                 </div>
             </nav>
@@ -70,11 +58,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="jumbotron">
-				<h1 class="bg-danger">Help to Make India Clean <h1>
-				<h3>&emsp;&emsp;Click a Picture/Video of overflow dustbin,garbage, wasting water, polluted water etc and upload those to help make India Clean.
-You can upload a picture in format with maximum 5MB and video in format with maximum 100MB.</h3>
+				<h1 class="bg-danger" style="text-align:center">Help to Make India Clean </h1>
+				<p>&emsp;&emsp;Click a Picture/Video of overflow dustbin,garbage, wasting water, polluted water etc and upload those to help make India Clean.
+You can upload a picture in format with maximum 5MB and video in format with maximum 100MB.</p>
 				<br><br>
-				<form action="img.php?latitude=<?php echo $lat;?>&longitude=<?php echo $long; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+				<form action="store-image.php?usr=<?php echo $usr;?>&lat=<?php echo $lat;?>&long=<?php echo $long; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
 				<div class="form-group">
 					<label for="fileup" class="col-sm-2 control-lebal">Image </label>
 					<div class="col-sm-10">

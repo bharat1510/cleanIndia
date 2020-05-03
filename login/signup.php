@@ -1,12 +1,12 @@
-<?php include('server.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login </title>
+	<title>SignUp</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/heart.jpg"/>
+	<link rel="icon" type="image/png" href="./images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -27,53 +27,74 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+	<!--Custom JavaScript Alert Box-->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-	<form method="post" action="index.php">
+	<?php
+	if(isset($_GET['sent']))
+		if(($_GET['sent']) == "false")
+			echo '<script> swal({
+			title: "Upss!",
+			text: "Passwords does not match",
+			icon: "error",
+			button: "Try again",
+		}); </script>'; 
+	?>
+	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/lbg.png');">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form">
+				<form method="post" action="store.php" class="login100-form validate-form">
 					<span class="login100-form-title p-b-49">
-						Hey Rocks,
+						Sign Up
 					</span>
-					
-					<?php include('errors.php'); ?>
+
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Type your username">
+						<span class="label-input100">Email ID</span>
+						<input class="input100" type="text" name="email" placeholder="Type your Email address">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="password" placeholder="Type your password">
+						<input class="input100" type="password" name="pass" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
-					<div class="text-right p-t-8 p-b-31">
-						<a href="pass.html">
-							Here is your password : -) 
-						</a>
-					</div>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<span class="label-input100">Confirm Password</span>
+						<input class="input100" type="password" name="pass1" placeholder="Retype your password">
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div><br/>
 					
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							
-							<button type="submit" class="login100-form-btn" name="login_user">Login</button>
-							
-							</div>
+							<button class="login100-form-btn" name="signup">
+								Sign Up
+							</button>
+						</div>
 					</div>
-				
-					
 				</form>
+				
+					<div class="txt1 text-center p-t-54 p-b-20">
+						<span>
+							Already have an account ? 
+						</span>
+					</div>
+
+					<div class="flex-col-c p-t-155">
+						<a href="login.php" class="btn btn-secondary btn-sm">
+							Login
+						</a>
+						<a href="../index.php" class="txt2">
+							Go to HomePage
+						</a>
+					</div>
 			</div>
 		</div>
 	</div>
-	
-	</form>
-	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
